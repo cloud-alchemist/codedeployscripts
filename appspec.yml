@@ -1,0 +1,20 @@
+version: 0.0
+os: linux
+files:
+  - source: /helloworld.jar
+    destination: /opt/apache-tomcat-7.0.70/webapps/
+hooks:
+  BeforeInstall:
+    - location: deregister_from_elb.sh
+      timeout: 300
+      runas: root
+    - location: stop_tomcat.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: start_tomcat.sh
+      timeout: 300
+      runas: root
+    - location: register_with_elb.sh
+      timeout: 300
+      runas: root
