@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /helloworld.jar
+  - source: /helloworld.war
     destination: /opt/apache-tomcat-7.0.70/webapps/
 hooks:
   BeforeInstall:
